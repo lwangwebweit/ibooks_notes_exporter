@@ -1,6 +1,9 @@
 # ibooks-notes-exporter
 
-> Highlights are stored in sqlite under `/Library/Containers/com.apple.iBooksX/Data/Documents/AEAnnotation`
+> Highlights are stored in sqlite under
+>
+> `~/Library/Containers/com.apple.iBooksX/Data/Documents/AEAnnotation`
+>
 > the idea is to read from the sqlite, and parse in the form we need 
 
 People remember less than 20% of what they read if they are not taking notes.
