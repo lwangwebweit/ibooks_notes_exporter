@@ -8,6 +8,7 @@ import (
 	dbThings "ibooks_notes_exporter/db"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -110,13 +111,20 @@ func exportNotesAndHighlights(cCtx *cli.Context) error {
 			log.Fatal(err)
 		}
 
-		fmt.Println(fmt.Sprintf("> %s", singleHightLightNote.HightLight))
+		if strings.Contains(singleHightLightNote.HightLight, "\n") {
+			fmt.Println("```")
+			fmt.Println("// todo: multilines of Highlights，need to edit in notion manually")
+			fmt.Println(fmt.Sprintf("%s", singleHightLightNote.HightLight))
+			fmt.Println("```")
+		} else {
+			fmt.Println(fmt.Sprintf("> %s", singleHightLightNote.HightLight))
+			fmt.Println(">")
+			fmt.Println()
+		}
 
 		if singleHightLightNote.Note.Valid {
 			fmt.Println(fmt.Sprintf("\n%s", singleHightLightNote.Note.String))
 		}
-
-		fmt.Println("---\n\n")
 
 	}
 
